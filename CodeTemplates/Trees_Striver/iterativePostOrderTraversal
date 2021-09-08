@@ -37,7 +37,8 @@ public:
 
 
 //optimised code 
-// tc - o(n) sc - o(n)
+// tc - o(2n) 
+// sc - o(n)
 
 
 
