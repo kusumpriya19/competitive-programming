@@ -1,0 +1,25 @@
+// leetcode problem - https://leetcode.com/problems/binary-tree-maximum-path-sum/submissions/
+// yt - https://www.youtube.com/watch?v=WszrfSwMz58&list=PLgUwDviBIf0q8Hkd7bK2Bpryj2xVJk8Vk&index=18
+
+// tc- 0(n) sc same
+// brute force solution will be finding the diameter of every node from every node and returning highest
+
+
+
+
+class Solution {
+public:
+    int maxPathSum(TreeNode* root) {
+       int maxi = INT_MIN; 
+        maxPathDown(root, maxi); 
+        return maxi;  
+    }
+    
+    int maxPathDown(TreeNode* node, int &maxi) {
+        if (node == NULL) return 0;
+        int left = max(0, maxPathDown(node->left, maxi));
+        int right = max(0, maxPathDown(node->right, maxi));
+        maxi = max(maxi, left + right + node->val);
+        return max(left, right) + node->val;
+    }
+};
