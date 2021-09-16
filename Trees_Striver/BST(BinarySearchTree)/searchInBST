@@ -1,4 +1,4 @@
-// tc - o(logn) sc - o(1)
+// tc - o(logn) sc - o(n)
 ll leetcode - https://leetcode.com/problems/search-in-a-binary-search-tree/submissions/
 
 
