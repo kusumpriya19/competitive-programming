@@ -1,0 +1,32 @@
+
+// tc - o(n) sc - o(n)
+
+class Solution {
+public:
+    bool isSymmetric(TreeNode* root) {
+    if(root==NULL)
+    return true;
+    return helper(root->left,root->right);
+    }
+    bool helper(TreeNode* l,TreeNode* r)
+    {
+        if(l==NULL&&r==NULL)
+        {
+            return true;
+        }   
+        else if(l==NULL&&r!=NULL)
+        {
+            return false;
+        }    
+        else if(l!=NULL&&r==NULL)
+        {
+            return false;
+        }   
+        else if(l->val!=r->val)
+        {
+        return false;
+        }
+        else
+        return helper(l->left,r->right)&&helper(r->left,l->right);
+            }
+    };
