@@ -1,0 +1,35 @@
+// question is - given a BT and you have to convert it into a BT that follows children sum property. We dont have to reduce the nodes or anything and we cannot change the structure
+// children sum property - node = left+right
+// tc-o(n) sc - o(n)
+//recursive solution approach
+/*
+while moving down we increase the nodes value and decreasing is not allowed so we never get short and while returning we add up 
+*/
+
+void reorder(BinaryTreeNode < int > * root) {
+    if(root == NULL) return; 
+    int child = 0;
+    if(root->left) {
+        child += root->left->data; 
+    }
+    if(root->right) {
+        child += root->right->data; 
+    }
+    
+    if(child >= root->data) root->data = child; 
+    else {
+        if(root->left) root->left->data = root->data; 
+        else if(root->right) root->right->data = root->data; 
+    }
+    
+    reorder(root->left); 
+    reorder(root->right); 
+    
+    int tot = 0; 
+    if(root->left) tot += root->left->data; 
+    if(root->right) tot+= root->right->data; 
+    if(root->left or root->right) root->data = tot;  
+}
+void changeTree(BinaryTreeNode < int > * root) {
+    reorder(root); 
+}  
