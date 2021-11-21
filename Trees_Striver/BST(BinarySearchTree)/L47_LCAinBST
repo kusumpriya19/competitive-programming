@@ -1,0 +1,19 @@
+
+###whenever p and q both lie on left move left when both lie on right move right
+tc - o(height of tree) sc - o(1)
+leetcode - https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
+
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if ((root -> val > p -> val) && (root -> val > q -> val)) {
+            return lowestCommonAncestor(root -> left, p, q);
+        }
+        if ((root -> val < p -> val) && (root -> val < q -> val)) {
+            return lowestCommonAncestor(root -> right, p, q);
+        }
+        return root;
+    
+        
+    }
+};
